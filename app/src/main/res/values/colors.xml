@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#c5caed</color>
+    <color name="colorWhite">#e3e4ea</color>
+    <color name="putih">#f5f5f7</color>
+    <color name="colorBack">#ba0d5b</color>
+    <color name="colorYellow">#f2e126</color>
+    <color name="tabScrollColor">#8a140e</color>
+</resources>
