@@ -8,5 +8,9 @@
     <color name="colorBack">#ba0d5b</color>
     <color name="colorYellow">#f2e126</color>
     <color name="tabScrollColor">#8a140e</color>
+    <color name="tabScrollColor2">#cc423b</color>
     <color name="rvcolor">#f2eca8</color>
+    <color name="buttondefault">#f2e877</color>
+    <color name="buttonfocus">#f2e33b</color>
+    <color name="buttonpressed">#f9f8f7</color>
 </resources>

@@ -7,15 +7,15 @@
     android:background="@color/tabScrollColor"
     tools:context=".MainActivity">
 
-    <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:adjustViewBounds="true"-->
-        <!--android:scaleType="centerCrop"-->
-        <!--android:src="@drawable/globe"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/rv_countries" />-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/globe"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rv_countries" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/linearLayout"
@@ -89,15 +89,15 @@
 
             <Button
                 android:id="@+id/btn_cari_benua"
-                android:layout_width="119dp"
+                android:layout_width="106dp"
                 android:layout_height="34dp"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:background="@color/colorAccent"
+                android:background="@drawable/button"
                 android:gravity="center"
                 android:text="cari"
                 android:textColor="@color/cardview_dark_background"

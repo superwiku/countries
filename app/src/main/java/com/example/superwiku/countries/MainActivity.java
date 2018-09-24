@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Negara>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "network failure :( inform the user and possibly retry", Toast.LENGTH_LONG).show();
+                t.printStackTrace();
 
             }
         });
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                         break;
-                    case "Australia":
+                    case "Australia Oceania":
                         Call<List<Negara>> call5=apiInterface.getNegaraBenua("Oceania");
                         call5.enqueue(new Callback<List<Negara>>() {
                             @Override
