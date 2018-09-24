@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@color/putih"
+    app:cardBackgroundColor="@color/rvcolor"
     app:cardCornerRadius="10dp"
     app:cardElevation="12dp"
     android:layout_marginTop="5dp"
@@ -35,9 +35,11 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="205dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
             android:orientation="vertical">

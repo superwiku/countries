@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Negara>> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "network failure :( inform the user and possibly retry", Toast.LENGTH_LONG).show();
 
             }
         });
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<List<Negara>> call, Throwable t) {
-
+                                Toast.makeText(MainActivity.this, "network failure :( inform the user and possibly retry", Toast.LENGTH_LONG).show();
                             }
                         });
                         break;
@@ -83,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<List<Negara>> call, Throwable t) {
-
+                                Toast.makeText(MainActivity.this, "network failure :( inform the user and possibly retry", Toast.LENGTH_LONG).show();
                             }
                         });
                         break;
@@ -100,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<List<Negara>> call, Throwable t) {
-
+                                Toast.makeText(MainActivity.this, "network failure :( inform the user and possibly retry", Toast.LENGTH_LONG).show();
                             }
                         });
                         break;
@@ -117,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<List<Negara>> call, Throwable t) {
-
+                                Toast.makeText(MainActivity.this, "network failure :( inform the user and possibly retry", Toast.LENGTH_LONG).show();
                             }
                         });
                         break;
@@ -134,13 +136,13 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<List<Negara>> call, Throwable t) {
-
+                                Toast.makeText(MainActivity.this, "network failure :( inform the user and possibly retry", Toast.LENGTH_LONG).show();
                             }
                         });
                         break;
                     case "SEMUA BENUA":
-                        Call<List<Negara>> call=apiInterface.getNegara();
-                        call.enqueue(new Callback<List<Negara>>() {
+                        Call<List<Negara>> call6=apiInterface.getNegara();
+                        call6.enqueue(new Callback<List<Negara>>() {
                             @Override
                             public void onResponse(Call<List<Negara>> call, Response<List<Negara>> response) {
                                 negaras=response.body();
@@ -151,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<List<Negara>> call, Throwable t) {
-
+                                Toast.makeText(MainActivity.this, "network failure :( inform the user and possibly retry", Toast.LENGTH_LONG).show();
                             }
                         });
                         break;
