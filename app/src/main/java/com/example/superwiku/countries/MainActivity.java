@@ -1,12 +1,15 @@
 package com.example.superwiku.countries;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -22,37 +25,29 @@ public class MainActivity extends AppCompatActivity {
     private List<Negara> negaras;
     private Negara satuNegara;
     private ApiInterface apiInterface;
+    private TextView jmlNegara;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView=(RecyclerView)findViewById(R.id.rv_countries);
+        jmlNegara=(TextView)findViewById(R.id.txt_jmlneg);
         layoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
+        Intent i=getIntent();
+        negaras=(List<Negara>)i.getSerializableExtra("datanya");
+        Integer jml=negaras.size();
+        jmlNegara.setText(Integer.toString(jml) + " negara");
+        negaraAllAdapter=new NegaraAllAdapter(negaras,MainActivity.this);
+        recyclerView.setAdapter(negaraAllAdapter);
+        negaraAllAdapter.notifyDataSetChanged();
         apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
-        Call<List<Negara>> call=apiInterface.getNegara();
-        call.enqueue(new Callback<List<Negara>>() {
-            @Override
-            public void onResponse(Call<List<Negara>> call, Response<List<Negara>> response) {
-                negaras=response.body();
-                negaraAllAdapter=new NegaraAllAdapter(negaras,MainActivity.this);
-                recyclerView.setAdapter(negaraAllAdapter);
-                negaraAllAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<List<Negara>> call, Throwable t) {
-                t.printStackTrace();
-
-            }
-        });
         final Spinner pilihan = (Spinner)findViewById(R.id.spin_benua);
-        Button pilih = (Button)findViewById(R.id.btn_cari_benua);
-        pilih.setOnClickListener(new View.OnClickListener() {
+        pilihan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String benuanya=pilihan.getSelectedItem().toString();
                 switch (benuanya){
                     case "Asia":
@@ -61,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<List<Negara>> call, Response<List<Negara>> response) {
                                 negaras=response.body();
+                                Integer jmlAsia=negaras.size();
+                                jmlNegara.setText(Integer.toString(jmlAsia) + " negara");
                                 negaraAllAdapter=new NegaraAllAdapter(negaras,MainActivity.this);
                                 recyclerView.setAdapter(negaraAllAdapter);
                                 negaraAllAdapter.notifyDataSetChanged();
@@ -78,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<List<Negara>> call, Response<List<Negara>> response) {
                                 negaras=response.body();
+                                Integer jmlEropa=negaras.size();
+                                jmlNegara.setText(Integer.toString(jmlEropa) + " negara");
                                 negaraAllAdapter=new NegaraAllAdapter(negaras,MainActivity.this);
                                 recyclerView.setAdapter(negaraAllAdapter);
                                 negaraAllAdapter.notifyDataSetChanged();
@@ -95,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<List<Negara>> call, Response<List<Negara>> response) {
                                 negaras=response.body();
+                                Integer jmlAfrika=negaras.size();
+                                jmlNegara.setText(Integer.toString(jmlAfrika) + " negara");
                                 negaraAllAdapter=new NegaraAllAdapter(negaras,MainActivity.this);
                                 recyclerView.setAdapter(negaraAllAdapter);
                                 negaraAllAdapter.notifyDataSetChanged();
@@ -112,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<List<Negara>> call, Response<List<Negara>> response) {
                                 negaras=response.body();
+                                Integer jmlAmerika=negaras.size();
+                                jmlNegara.setText(Integer.toString(jmlAmerika) + " negara");
                                 negaraAllAdapter=new NegaraAllAdapter(negaras,MainActivity.this);
                                 recyclerView.setAdapter(negaraAllAdapter);
                                 negaraAllAdapter.notifyDataSetChanged();
@@ -129,6 +132,8 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<List<Negara>> call, Response<List<Negara>> response) {
                                 negaras=response.body();
+                                Integer jmlAus=negaras.size();
+                                jmlNegara.setText(Integer.toString(jmlAus) + " negara");
                                 negaraAllAdapter=new NegaraAllAdapter(negaras,MainActivity.this);
                                 recyclerView.setAdapter(negaraAllAdapter);
                                 negaraAllAdapter.notifyDataSetChanged();
@@ -146,6 +151,8 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<List<Negara>> call, Response<List<Negara>> response) {
                                 negaras=response.body();
+                                Integer jmlAll=negaras.size();
+                                jmlNegara.setText(Integer.toString(jmlAll) + " negara");
                                 negaraAllAdapter=new NegaraAllAdapter(negaras,MainActivity.this);
                                 recyclerView.setAdapter(negaraAllAdapter);
                                 negaraAllAdapter.notifyDataSetChanged();
@@ -159,6 +166,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         });
+
     }
 }

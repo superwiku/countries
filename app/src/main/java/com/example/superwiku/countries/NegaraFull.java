@@ -1,14 +1,26 @@
 package com.example.superwiku.countries;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class NegaraFull {
+public class NegaraFull implements Serializable {
     private String name,capital,region,flag;
-    private String subregion;
     private Long population,area;
     private List<Float> latlng;
     private List<Currency> currencies;
     private List<Language> languages;
+
+    public NegaraFull(String name, String capital, String region, String flag, Long population, Long area, List<Float> latlng, List<Currency> currencies, List<Language> languages) {
+        this.name = name;
+        this.capital = capital;
+        this.region = region;
+        this.flag = flag;
+        this.population = population;
+        this.area = area;
+        this.latlng = latlng;
+        this.currencies = currencies;
+        this.languages = languages;
+    }
 
     public String getName() {
         return name;
@@ -40,14 +52,6 @@ public class NegaraFull {
 
     public void setFlag(String flag) {
         this.flag = flag;
-    }
-
-    public String getSubregion() {
-        return subregion;
-    }
-
-    public void setSubregion(String subregion) {
-        this.subregion = subregion;
     }
 
     public Long getPopulation() {
