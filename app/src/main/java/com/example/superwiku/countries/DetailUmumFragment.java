@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.ahmadrosid.svgloader.SvgLoader;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 import retrofit2.Call;
@@ -53,7 +54,7 @@ public class DetailUmumFragment extends Fragment {
         imgdtlbendera=view.findViewById(R.id.img_dtlbendera);
         String getArguments=getArguments().getString(KEY_ACTIVITY);
         apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
-        Call<List<NegaraFull>> call7=apiInterface.getSatuNegara("getArguments");
+        Call<List<NegaraFull>> call7=apiInterface.getSatuNegara(getArguments);
         call7.enqueue(new Callback<List<NegaraFull>>() {
             @Override
             public void onResponse(Call<List<NegaraFull>> call, Response<List<NegaraFull>> response) {
@@ -61,12 +62,12 @@ public class DetailUmumFragment extends Fragment {
                 txtdtlnama.setText(negaraFull.get(0).getName());
                 txtdtlibukota.setText(negaraFull.get(0).getCapital());
                 txtdtlsubbenua.setText(negaraFull.get(0).getRegion());
-                txtdtlluas.setText(negaraFull.get(0).getArea().toString() + " km2");
-                txtdtlpopulasi.setText(negaraFull.get(0).getPopulation().toString() + " jiwa");
+                Long area=negaraFull.get(0).getArea();
+                txtdtlluas.setText(NumberFormat.getNumberInstance().format(area) + " km2");
+                Long popu=negaraFull.get(0).getPopulation();
+                txtdtlpopulasi.setText(NumberFormat.getNumberInstance().format(popu) + " jiwa");
                 SvgLoader.pluck().with(getActivity()).load(negaraFull.get(0).getFlag(),imgdtlbendera);
-
-
-                    }
+                }
 
             @Override
             public void onFailure(Call<List<NegaraFull>> call, Throwable t) {

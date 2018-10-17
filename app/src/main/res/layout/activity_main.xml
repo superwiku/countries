@@ -70,15 +70,18 @@
 
             <Spinner
                 android:id="@+id/spin_benua"
-                android:layout_width="220dp"
-                android:layout_height="37dp"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:background="@color/buttondefault"
                 android:entries="@array/nama_benua"
                 android:padding="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView2"
                 app:layout_constraintTop_toTopOf="parent">
 
             </Spinner>
