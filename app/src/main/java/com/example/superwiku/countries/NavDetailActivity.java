@@ -32,6 +32,12 @@ import retrofit2.Response;
 public class NavDetailActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     FragmentManager fragmentManager;
+    ApiInterface apiInterface;
+    List<NegaraFull> negaraFulls;
+    NegaraFull negaraFull;
+    ImageView navHeader;
+    TextView navHeaderNama;
+    TextView navHeaderBenua;
     static String a;
 
     @Override
@@ -40,9 +46,37 @@ public class NavDetailActivity extends AppCompatActivity
         setContentView(R.layout.activity_nav_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Intent intent=getIntent();
+        final Intent intent=getIntent();
         a=intent.getStringExtra("namanya");
+        apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
+        Call<List<NegaraFull>>call=apiInterface.getSatuNegara(a);
+        call.enqueue(new Callback<List<NegaraFull>>() {
+            @Override
+            public void onResponse(Call<List<NegaraFull>> call, Response<List<NegaraFull>> response) {
+                negaraFulls=response.body();
+                negaraFull=negaraFulls.get(0);
+                NavigationView navigationView=(NavigationView)findViewById(R.id.nav_view);
+                View headerView=navigationView.getHeaderView(0);
+                navHeader=(ImageView)headerView.findViewById(R.id.img_nav_flag_header);
+                navHeaderNama=(TextView)headerView.findViewById(R.id.txt_nav_nama_header);
+                navHeaderBenua=(TextView)headerView.findViewById(R.id.txt_nav_benua_header);
+                navHeaderNama.setText(negaraFull.getName());
+                navHeaderBenua.setText(negaraFull.getRegion());
+                SvgLoader.pluck().with(NavDetailActivity.this).load(negaraFull.getFlag(),navHeader);
+                DetailUmumFragment detailUmumFragment=new DetailUmumFragment();
+                Bundle umum=new Bundle();
+                umum.putSerializable(DetailUmumFragment.KEY_ACTIVITY,negaraFull);
+                detailUmumFragment.setArguments(umum);
+                android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.fnav_detail,detailUmumFragment);
+                ft.commit();
+            }
 
+            @Override
+            public void onFailure(Call<List<NegaraFull>> call, Throwable t) {
+
+            }
+        });
 
         fragmentManager =getSupportFragmentManager();
 
@@ -55,14 +89,6 @@ public class NavDetailActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //default launcher
-        DetailUmumFragment detailUmumFragment=new DetailUmumFragment();
-        Bundle umum=new Bundle();
-        umum.putString(DetailUmumFragment.KEY_ACTIVITY,a);
-        detailUmumFragment.setArguments(umum);
-        android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fnav_detail,detailUmumFragment);
-        ft.commit();
     }
 
     @Override
@@ -107,12 +133,11 @@ public class NavDetailActivity extends AppCompatActivity
 
             DetailUmumFragment detailUmumFragment=new DetailUmumFragment();
             Bundle umum=new Bundle();
-            umum.putString(DetailUmumFragment.KEY_ACTIVITY,a);
+            umum.putSerializable(DetailUmumFragment.KEY_ACTIVITY,negaraFull);
             detailUmumFragment.setArguments(umum);
             android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fnav_detail,detailUmumFragment);
             ft.commit();
-
         } else if (id == R.id.nav_bahasa) {
             android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fnav_detail,new BahasaFragment());

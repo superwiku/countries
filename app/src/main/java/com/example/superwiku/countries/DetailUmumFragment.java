@@ -32,7 +32,8 @@ public class DetailUmumFragment extends Fragment {
 
     TextView txtdtlnama,txtdtlibukota,txtdtlsubbenua,txtdtlluas,txtdtlpopulasi;
     ImageView imgdtlbendera;
-    List<NegaraFull> negaraFull;
+    List<NegaraFull> negaraFulls;
+    NegaraFull negaraFull;
     ApiInterface apiInterface;
     public static String KEY_ACTIVITY="msg_activity";
 
@@ -52,28 +53,41 @@ public class DetailUmumFragment extends Fragment {
         txtdtlluas=view.findViewById(R.id.txt_dtlluas);
         txtdtlpopulasi=view.findViewById(R.id.txt_dtlpopulasi);
         imgdtlbendera=view.findViewById(R.id.img_dtlbendera);
-        String getArguments=getArguments().getString(KEY_ACTIVITY);
-        apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
-        Call<List<NegaraFull>> call7=apiInterface.getSatuNegara(getArguments);
-        call7.enqueue(new Callback<List<NegaraFull>>() {
-            @Override
-            public void onResponse(Call<List<NegaraFull>> call, Response<List<NegaraFull>> response) {
-                negaraFull=response.body();
-                txtdtlnama.setText(negaraFull.get(0).getName());
-                txtdtlibukota.setText(negaraFull.get(0).getCapital());
-                txtdtlsubbenua.setText(negaraFull.get(0).getRegion());
-                Long area=negaraFull.get(0).getArea();
-                txtdtlluas.setText(NumberFormat.getNumberInstance().format(area) + " km2");
-                Long popu=negaraFull.get(0).getPopulation();
-                txtdtlpopulasi.setText(NumberFormat.getNumberInstance().format(popu) + " jiwa");
-                SvgLoader.pluck().with(getActivity()).load(negaraFull.get(0).getFlag(),imgdtlbendera);
-                }
+        negaraFull= (NegaraFull) this.getArguments().getSerializable(KEY_ACTIVITY);
 
-            @Override
-            public void onFailure(Call<List<NegaraFull>> call, Throwable t) {
+        if (negaraFull != null) {
+            txtdtlnama.setText(negaraFull.getName());
+            txtdtlibukota.setText(negaraFull.getCapital());
+            txtdtlsubbenua.setText(negaraFull.getRegion());
+            Long area=negaraFull.getArea();
+            txtdtlluas.setText(NumberFormat.getNumberInstance().format(area) + " km2");
+            Long popu=negaraFull.getPopulation();
+            txtdtlpopulasi.setText(NumberFormat.getNumberInstance().format(popu) + " jiwa");
+            SvgLoader.pluck().with(getActivity()).load(negaraFull.getFlag(),imgdtlbendera);
+        }
 
-            }
-        });
+
+//        apiInterface=ApiClient.getApiClient().create(ApiInterface.class);
+//        Call<List<NegaraFull>> call7=apiInterface.getSatuNegara(getArguments);
+//        call7.enqueue(new Callback<List<NegaraFull>>() {
+//            @Override
+//            public void onResponse(Call<List<NegaraFull>> call, Response<List<NegaraFull>> response) {
+//                negaraFull=response.body();
+//                txtdtlnama.setText(negaraFull.get(0).getName());
+//                txtdtlibukota.setText(negaraFull.get(0).getCapital());
+//                txtdtlsubbenua.setText(negaraFull.get(0).getRegion());
+//                Long area=negaraFull.get(0).getArea();
+//                txtdtlluas.setText(NumberFormat.getNumberInstance().format(area) + " km2");
+//                Long popu=negaraFull.get(0).getPopulation();
+//                txtdtlpopulasi.setText(NumberFormat.getNumberInstance().format(popu) + " jiwa");
+//                SvgLoader.pluck().with(getActivity()).load(negaraFull.get(0).getFlag(),imgdtlbendera);
+//                }
+//
+//            @Override
+//            public void onFailure(Call<List<NegaraFull>> call, Throwable t) {
+//
+//            }
+//        });
         // Inflate the layout for this fragment
         return view;
 
