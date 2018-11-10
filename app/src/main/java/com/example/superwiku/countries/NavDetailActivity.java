@@ -1,12 +1,8 @@
 package com.example.superwiku.countries;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -19,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ahmadrosid.svgloader.SvgLoader;
 
@@ -130,7 +125,6 @@ public class NavDetailActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_detail_umum) {
-
             DetailUmumFragment detailUmumFragment=new DetailUmumFragment();
             Bundle umum=new Bundle();
             umum.putSerializable(DetailUmumFragment.KEY_ACTIVITY,negaraFull);
@@ -139,16 +133,28 @@ public class NavDetailActivity extends AppCompatActivity
             ft.replace(R.id.fnav_detail,detailUmumFragment);
             ft.commit();
         } else if (id == R.id.nav_bahasa) {
+            LanguageFragment languageFragment=new LanguageFragment();
+            Bundle bahasa=new Bundle();
+            bahasa.putSerializable(LanguageFragment.KEY_ACTIVITY_2,negaraFull);
+            languageFragment.setArguments(bahasa);
             android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.fnav_detail,new BahasaFragment());
+            ft.replace(R.id.fnav_detail,languageFragment);
             ft.commit();
         } else if (id == R.id.nav_currency) {
+            CurrencyFragment currencyFragment=new CurrencyFragment();
+            Bundle uang=new Bundle();
+            uang.putSerializable(CurrencyFragment.KEY_ACTIVITY_3,negaraFull);
+            currencyFragment.setArguments(uang);
             android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.fnav_detail,new CurrencyFragment());
+            ft.replace(R.id.fnav_detail,currencyFragment);
             ft.commit();
         } else if (id == R.id.nav_map) {
+            MapFragment mapFragment=new MapFragment();
+            Bundle peta=new Bundle();
+            peta.putSerializable(MapFragment.KEY_ACTIVITY_4,negaraFull);
+            mapFragment.setArguments(peta);
             android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.fnav_detail,new MapFragment());
+            ft.replace(R.id.fnav_detail,mapFragment);
             ft.commit();
         }
 
