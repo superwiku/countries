@@ -13,7 +13,6 @@ public class NegaraFull implements Serializable {
     private List<Language> languages;
 
 
-
     public String getName() {
         return name;
     }

@@ -47,7 +47,7 @@
     <TextView
         android:id="@+id/txt_dtlnama"
         android:layout_width="match_parent"
-        android:layout_height="88dp"
+        android:layout_height="120dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -57,7 +57,7 @@
         android:gravity="center"
         android:text="namanya"
         android:textColor="@color/colorYellow"
-        android:textSize="36sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:fontFamily="sans-serif-condensed"
         app:layout_constraintEnd_toEndOf="parent"
