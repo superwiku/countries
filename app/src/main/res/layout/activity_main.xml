@@ -97,7 +97,7 @@
                 android:layout_marginRight="2dp"
                 android:gravity="center"
                 android:text="Asia - Afrika - Amerika - Eropa - Australia Oceania"
-                android:textColor="@color/buttondefault"
+                android:textColor="@color/buttonpressed"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:fontFamily="serif"
@@ -117,6 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:padding="8dp"
@@ -127,6 +128,7 @@
     </android.support.v7.widget.RecyclerView>
 
     <TextView
+        android:id="@+id/textView19"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
