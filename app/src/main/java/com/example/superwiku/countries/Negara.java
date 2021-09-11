@@ -1,10 +1,9 @@
 package com.example.superwiku.countries;
 
-import java.util.List;
+import java.io.Serializable;
 
-public class Negara {
+public class Negara implements Serializable {
     private String name,capital,region,flag;
-    private String subregion;
 
     public Negara(String name, String capital, String region, String flag) {
         this.name = name;
@@ -13,7 +12,6 @@ public class Negara {
         this.flag = flag;
 
     }
-
     public String getName() {
         return name;
     }
@@ -46,11 +44,5 @@ public class Negara {
         this.flag = flag;
     }
 
-    public String getSubregion() {
-        return subregion;
-    }
 
-    public void setSubregion(String subregion) {
-        this.subregion = subregion;
-    }
 }

@@ -40,8 +40,8 @@ public class NegaraAllAdapter extends RecyclerView.Adapter<NegaraAllAdapter.AllV
             @Override
             public void onClick(View v) {
                 String namanya=negaraList.get(position).getName();
-                Intent pindah=new Intent(v.getContext(),DetailActivity.class);
-                pindah.putExtra("name",namanya);
+                Intent pindah=new Intent(v.getContext(),NavDetailActivity.class);
+                pindah.putExtra("namanya",namanya);
                 v.getContext().startActivity(pindah);
 
             }

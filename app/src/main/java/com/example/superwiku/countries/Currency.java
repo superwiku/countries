@@ -1,6 +1,8 @@
 package com.example.superwiku.countries;
 
-public class Currency {
+import java.io.Serializable;
+
+public class Currency implements Serializable {
     private String code;
     private String name;
     private String symbol;

@@ -1,6 +1,8 @@
 package com.example.superwiku.countries;
 
-public class Language {
+import java.io.Serializable;
+
+public class Language implements Serializable {
     private String iso639_1;
     private String iso639_2;
     private String name;
