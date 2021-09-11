@@ -3,14 +3,15 @@ package com.example.superwiku.countries;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -62,7 +63,7 @@ public class NavDetailActivity extends AppCompatActivity
                 Bundle umum=new Bundle();
                 umum.putSerializable(DetailUmumFragment.KEY_ACTIVITY,negaraFull);
                 detailUmumFragment.setArguments(umum);
-                android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+                FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.fnav_detail,detailUmumFragment);
                 ft.commit();
             }
@@ -129,7 +130,7 @@ public class NavDetailActivity extends AppCompatActivity
             Bundle umum=new Bundle();
             umum.putSerializable(DetailUmumFragment.KEY_ACTIVITY,negaraFull);
             detailUmumFragment.setArguments(umum);
-            android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+            FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fnav_detail,detailUmumFragment);
             ft.commit();
         } else if (id == R.id.nav_bahasa) {
@@ -137,7 +138,7 @@ public class NavDetailActivity extends AppCompatActivity
             Bundle bahasa=new Bundle();
             bahasa.putSerializable(LanguageFragment.KEY_ACTIVITY_2,negaraFull);
             languageFragment.setArguments(bahasa);
-            android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+            FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fnav_detail,languageFragment);
             ft.commit();
         } else if (id == R.id.nav_currency) {
@@ -145,7 +146,7 @@ public class NavDetailActivity extends AppCompatActivity
             Bundle uang=new Bundle();
             uang.putSerializable(CurrencyFragment.KEY_ACTIVITY_3,negaraFull);
             currencyFragment.setArguments(uang);
-            android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+            FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fnav_detail,currencyFragment);
             ft.commit();
         } else if (id == R.id.nav_map) {
@@ -153,7 +154,7 @@ public class NavDetailActivity extends AppCompatActivity
             Bundle peta=new Bundle();
             peta.putSerializable(MapFragment.KEY_ACTIVITY_4,negaraFull);
             mapFragment.setArguments(peta);
-            android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+            FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fnav_detail,mapFragment);
             ft.commit();
         }

@@ -1,13 +1,10 @@
 package com.example.superwiku.countries;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
